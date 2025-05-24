@@ -1,3 +1,5 @@
 SLE Micro
 
 In Firwall kubelet/10250tcp freigeben
+
+hello-world: Testen eines simplen http deployments mit deployment, service und ingress

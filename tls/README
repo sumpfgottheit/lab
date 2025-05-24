@@ -1,0 +1,39 @@
+Zertifikate können als K8S Secret gespeichet werden.
+
+Das Default-Zertifkat muss im kube-system namespace liegen:
+
+k create secret tls sumpfgottheit.casa --cert=/home/saf/devel/certbot/config/live/sumpfgottheit.casa/fullchain.pem --key=/home/saf/devel/certbot/config/live/sumpfgottheit.casa/privkey.pem -n kube-system
+
+Anschliessend muss das Zertifikat dem Traefik als Default bekannt gemacht werden. Der Name des Zertifikats ist sumpfgottheit.casa
+https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-tlsstore
+
+
+---
+apiVersion: traefik.io/v1alpha1
+kind: TLSStore
+metadata:
+  name: default
+  namespace: kube-system
+spec:
+  defaultCertificate:
+    secretName: sumpfgottheit.casa
+
+
+
+Um ein bestimmtes zertifikate zu verwenden muss das zertifikat im entsprechenden namespice sind
+
+
+
+k create secret tls sumpfgottheit.casa --cert=/home/saf/devel/certbot/config/live/sumpfgottheit.casa/fullchain.pem --key=/home/saf/devel/certbot/config/live/sumpfgottheit.casa/privkey.pem -n hello-world
+
+Beim Ingress wird der SecretName in der TLS Config angegeben
+
+---
+...
+spec:
+  tls:
+   - hosts:
+       - hello-world-secret.sumpfgottheit.casa
+     secretName: sumpfgottheit.casa
+  rules:
+...
