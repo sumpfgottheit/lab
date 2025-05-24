@@ -19,10 +19,7 @@ spec:
     secretName: sumpfgottheit.casa
 
 
-
-Um ein bestimmtes zertifikate zu verwenden muss das zertifikat im entsprechenden namespice sind
-
-
+Um ein bestimmtes zertifikate zu verwenden muss das zertifikat im entsprechenden namespace sein
 
 k create secret tls sumpfgottheit.casa --cert=/home/saf/devel/certbot/config/live/sumpfgottheit.casa/fullchain.pem --key=/home/saf/devel/certbot/config/live/sumpfgottheit.casa/privkey.pem -n hello-world
 

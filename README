@@ -3,3 +3,28 @@ SLE Micro
 In Firwall kubelet/10250tcp freigeben
 
 hello-world: Testen eines simplen http deployments mit deployment, service und ingress
+
+cd hello-world:
+k apply -f 01_namespace.yaml
+k apply -f 02_deployment.yaml
+k apply -f 03_service.yaml
+k apply -f 04_ingress.yaml
+
+# curl http://hello-world.sumpfgottheit.casa
+Hostname: hello-world-56888d68f-ntg5p
+IP: 127.0.0.1
+IP: ::1
+IP: 10.42.0.9
+IP: fe80::4ca2:82ff:feca:d171
+RemoteAddr: 10.42.0.8:44096
+GET / HTTP/1.1
+Host: hello-world.sumpfgottheit.casa
+User-Agent: curl/8.11.1
+Accept: */*
+Accept-Encoding: gzip
+X-Forwarded-For: 10.42.0.1
+X-Forwarded-Host: hello-world.sumpfgottheit.casa
+X-Forwarded-Port: 80
+X-Forwarded-Proto: http
+X-Forwarded-Server: traefik-c98fdf6fb-swm8b
+X-Real-Ip: 10.42.0.1
