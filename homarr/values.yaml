@@ -1,0 +1,24 @@
+env:
+  TZ: "Europe/Vienna"
+
+# SQLite database configuration
+persistence:
+  homarrDatabase:
+    enabled: true
+    storageClassName: "local-path"
+    size: "100Mi"
+
+# Ingress configuration
+ingress:
+    enabled: true
+    ingressClassName: "traefik"
+    annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    hosts:
+    - host: homarr.sumpfgottheit.casa
+      paths:
+        - path: /
+    - host: homelab.sumpfgottheit.casa
+      paths:
+        - path: /        
+  

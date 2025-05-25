@@ -1,0 +1,23 @@
+# Installation Homarr
+
+
+k apply -f 01_namespace.yaml
+SECRET=$(openssl rand -hex 32)
+kubectl create secret generic db-secret --from-literal=db-encryption-key=$SECRET --namespace homarr
+
+values.yaml anhand von Doku und original-values.yaml erstellt
+
+# helm install homarr oci://ghcr.io/homarr-labs/charts/homarr -f values.yaml -n homarr
+
+Pulled: ghcr.io/homarr-labs/charts/homarr:3.14.0
+Digest: sha256:fe25725a726e581c34ddf78a07e1c7ddabefd2771502eb15b42a9f6a23cfa7fa
+NAME: homarr
+LAST DEPLOYED: Sun May 25 11:20:40 2025
+NAMESPACE: homarr
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+1. Get the application URL by running these commands:
+  http://homarr.sumpfgottheit.casa/
+  http://homelab.sumpfgottheit.casa/
